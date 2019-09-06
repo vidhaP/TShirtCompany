@@ -8,7 +8,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class AppChildComponent implements OnInit {
   @Input() tshirt;
-  quantity;
+  quantitylocal;
   error=false;
   @Output() cancelevent=new EventEmitter();
   @Output() buyevent=new EventEmitter();
@@ -18,15 +18,15 @@ export class AppChildComponent implements OnInit {
   }
   buy()
   {
-    if(this.quantity)
+    if(this.quantitylocal)
     {
-      if(this.quantity > this.tshirt.quantity)
+      if(this.quantitylocal > this.tshirt.quantity)
       {
         alert("not availabale");
       }
       else
       {
-        this.tshirt.quantity=this.tshirt.quantity-this.quantity;
+        this.tshirt.quantity=this.tshirt.quantity-this.quantitylocal;
         this.buyevent.emit(this.tshirt);
       }
     }
